@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ListPosts from './components/ListPosts';
 import './App.css';
+import Sort from './components/Sort';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      sortType: 0
+    }
+  }
+
+  sortChanged = (sortType) => {
+    this.refs.listPostChild.reorderPosts(sortType)
+  }
+
   render() {
+    console.log(this.refs)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h1>Blog Posts Populares</h1>
+        <hr />
+        <h4>Orden:&nbsp;
+        <Sort sortCallback={this.sortChanged} />
+        </h4>
+        &nbsp;
+        <ListPosts ref='listPostChild' sortType={this.state.sortType} />
       </div>
     );
   }
