@@ -13,7 +13,7 @@ export default class Votes extends Component {
     increase = () => {
         let newCount = this.state.count + 1
         this.setState({
-            count: this.state.count + 1
+            count: newCount
         })
         this.props.votesChanged(newCount)
     }

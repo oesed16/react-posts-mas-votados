@@ -16,14 +16,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.refs)
     return (
       <div>
         <h1>Blog Posts Populares</h1>
         <hr />
-        <h4>Orden:&nbsp;
-        <Sort sortCallback={this.sortChanged} />
-        </h4>
+        <h4>Orden:&nbsp;<Sort sortCallback={this.sortChanged} /></h4>
         &nbsp;
         <ListPosts ref='listPostChild' sortType={this.state.sortType} />
       </div>

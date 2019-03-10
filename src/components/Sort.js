@@ -6,35 +6,32 @@ class Sort extends Component {
         super(props)
         this.state = {
             sortType: 0,
-
+            clickedA: false,
+            clickedD: false
         }
     }
 
     sortAscending = () => {
-        // const votes = posts.map(post => post.votes);
-        // // const { votes } = this.state;
-        // votes.sort((a, b) => a - b)
-        // this.setState({
-        //     votes
-        // });
         this.props.sortCallback(1)
+        this.setState({ 
+            clickedA: true,
+            clickedD: false 
+        });
     }
 
     sortDescending = () => {
-        // const { votes } = this.state;
-        // const votes = posts.map(post => post.votes);
-        // votes.sort((a, b) => a - b).reverse()
-        // this.setState({ 
-        //     votes 
-        // });
         this.props.sortCallback(-1)
+        this.setState({ 
+            clickedD: true,
+            clickedA: false  
+        });
     }
 
     render() {
         return (
             <div>
-                <Button onClick={this.sortAscending} variant="outline-primary">Ascendente</Button>&nbsp;
-                <Button onClick={this.sortDescending} variant="primary">Descendente</Button>
+                <Button onClick={this.sortAscending} variant={this.state.clickedA ? 'primary' : 'outline-primary'}>Ascendente</Button>&nbsp;
+                <Button onClick={this.sortDescending} variant={this.state.clickedD ? 'primary' : 'outline-primary'}>Descendente</Button>
             </div>
         );
     }
